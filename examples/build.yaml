@@ -1,0 +1,25 @@
+apiVersion: ops.kairos.io/v1alpha1
+kind: Build
+metadata:
+  name: hello-world-build
+  namespace: default
+spec:
+  # 注意：请将此处替换为您包含 examples/hello-world 代码的实际 Git 仓库地址
+  # 例如：https://github.com/your-username/kairos.git
+  contextUrl: https://github.com/your-username/kairos.git
+  
+  # Git 分支或提交 ID
+  revision: master
+  
+  # Dockerfile 相对路径（如果 Dockerfile 不在仓库根目录）
+  # 示例中的 Dockerfile 在 examples/hello-world 目录下
+  dockerfile: examples/hello-world/Dockerfile
+  
+  # 目标镜像地址
+  # 注意：如果您使用本地集群（如 Kind），可能需要配置 registry 或使用本地加载
+  outputImage: ttl.sh/kairos-hello-world:1h
+  
+  # 可选：构建完成后的回调
+  callback:
+    url: http://httpbin.org/post
+    authToken: "some-secret-token"

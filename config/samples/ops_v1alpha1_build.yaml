@@ -1,0 +1,9 @@
+apiVersion: ops.kairos.io/v1alpha1
+kind: Build
+metadata:
+  name: build-sample
+spec:
+  contextUrl: "https://github.com/kairos-io/kairos.git"
+  outputImage: "ttl.sh/kairos-build:1h"
+  callback:
+    url: "http://httpbin.org/post"
