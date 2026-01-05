@@ -2,10 +2,10 @@ FROM golang:1.25-alpine
 
 WORKDIR /app
 
-COPY go.mod go.sum* ./
+COPY examples/hello-world/go.mod examples/hello-world/go.sum* ./
 RUN go mod download
 
-COPY main.go .
+COPY examples/hello-world/main.go .
 
 RUN go build -o server main.go
 
